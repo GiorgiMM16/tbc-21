@@ -3,7 +3,7 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
     var countryName: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "FiraGO-Medium", size: 14)
+       // label.font = UIFont(name: "FiraGO-Medium", size: 14)
         label.textAlignment = .center
         label.textColor = UIColor.white
         label.translatesAutoresizingMaskIntoConstraints = false

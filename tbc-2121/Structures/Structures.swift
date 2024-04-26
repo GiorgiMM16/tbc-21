@@ -7,19 +7,16 @@
 
 import Foundation
 
-
-struct List: Codable {
-    var list: [Country]
-
-    struct Country: Codable {
-        var name: String
-        var png: String
+struct Country: Codable {
+    struct Name: Codable {
+        var official: String
+        var common: String
     }
-
-    var countryNames: [String] {
-        return list.map { $0.name }
-    }
+    var name: Name
+    var png: String
 }
+
+
 
 
 enum CountriesError: Error {

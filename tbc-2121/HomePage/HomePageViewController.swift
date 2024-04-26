@@ -39,7 +39,7 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
-        cell.countryName.text = viewModel.info?.list[indexPath.row].name
+        cell.countryName.text = viewModel.informacia[indexPath.row].name.official
         cell.countryName.textColor = UIColor.purple
         cell.backgroundColor = UIColor.red
         cell.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +57,7 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.info?.countryNames.count ?? 0
+        return viewModel.informacia.count
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

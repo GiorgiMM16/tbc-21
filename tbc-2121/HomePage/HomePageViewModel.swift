@@ -1,12 +1,12 @@
 import UIKit
 
 class HomePageViewModel: ObservableObject {
-    @Published var info: List?
+    @Published var informacia: [Country] = []
 
     func fetchData(completion: @escaping () -> Void) {
         Task {
             do {
-                self.info = try await getInfoFromWeb()
+                self.informacia = try await getInfoFromWeb()
                 DispatchQueue.main.async {
                     completion()
                 }
@@ -16,7 +16,7 @@ class HomePageViewModel: ObservableObject {
         }
     }
 
-    func getInfoFromWeb() async throws -> List {
+    func getInfoFromWeb() async throws -> [Country] {
         let endpoint = "https://restcountries.com/v3.1/all"
 
         guard let url = URL(string: endpoint) else {
@@ -30,7 +30,7 @@ class HomePageViewModel: ObservableObject {
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let list = try decoder.decode(List.self, from: data)
+            let list = try decoder.decode([Country].self, from: data)
             return list
         } catch {
             throw CountriesError.invalidData
